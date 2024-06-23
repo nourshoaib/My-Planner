@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Weekly Planner
+{% endblock %}
+
+{% block main %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='weekly.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="row mb-3 align-items-center justify-content-between">
+            <div class="col-auto">
+                <form method="GET" action="/weekly" class="week-nav-form">
+                    <input type="hidden" name="week_offset" value="{{ week_offset - 1 }}">
+                    <button type="submit" class="btn btn-custom btn-week-nav">
+                        <span class="d-none d-md-inline">&laquo; Previous Week</span>
+                        <span class="d-inline d-md-none"><i class="fas fa-chevron-left"></i></span>
+                    </button>
+                </form>
+            </div>
+            <div class="col text-center">
+                <h2 class="month-year">{{ month_year }}</h2>
+            </div>
+            <div class="col-auto">
+                <form method="GET" action="/weekly" class="week-nav-form">
+                    <input type="hidden" name="week_offset" value="{{ week_offset + 1 }}">
+                    <button type="submit" class="btn btn-custom btn-week-nav">
+                        <span class="d-none d-md-inline">Next Week &raquo;</span>
+                        <span class="d-inline d-md-none"><i class="fas fa-chevron-right"></i></span>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            {% for day_name, day_date in days_week %}
+                <div class="col-md-4 col-12 day-column">
+                    <div class="day-box task-box">
+                        <h3 class="day-title">{{ day_name }} - <span class="date-number">{{ day_date.day }}</span></h3>
+                        <ul class="task-list">
+                            {% for task, task_status, day in weekly_tasks %}
+                                {% if day_name.lower() in day.lower() %}
+                                    <li class="task-item {% if not 'unfinished' in task_status %}completed-task{% endif %}">
+                                        {{ task }}
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+{% endblock %}

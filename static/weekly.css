@@ -1,0 +1,163 @@
+/* Importing fonts from Google */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Resetting */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Style for the day columns */
+.day-column {
+    padding: 10px;
+}
+
+/* Style for the day box, similar to task-box in tasks.css */
+.day-box {
+    background-color: #ecf0f3;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Style for the day title */
+.day-title {
+    font-size: 1.2rem;
+    color: #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+/* Style for the date number */
+.date-number {
+    font-size: 1rem;
+    color: #999;
+}
+
+/* Style for task items */
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.task-item {
+    font-size: 1rem;
+    color: #666;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.task-item:last-child {
+    border-bottom: none;
+}
+
+.completed-task {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+/* Custom button styles */
+.btn-custom {
+    background-color: #007bff;
+    color: white;
+    border-radius: 15px;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-custom:hover {
+    background-color: #0056b3;
+}
+
+.btn-week-nav {
+    text-align: center;
+    width: auto;
+}
+
+/* Flexbox for aligning buttons and title */
+.row.mb-3.align-items-center.justify-content-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.week-nav-form {
+    display: inline;
+}
+
+/* Responsive styles */
+@media(max-width: 768px) {
+    .day-column {
+        margin-bottom: 20px;
+    }
+
+    .day-box {
+        padding: 15px;
+    }
+
+    .day-title {
+        font-size: 1rem;
+    }
+
+    .date-number {
+        font-size: 0.8rem;
+    }
+
+    .task-item {
+        font-size: 0.9rem;
+    }
+
+    .month-year {
+        font-size: 1.2rem;
+    }
+
+    .btn-custom {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    .btn-week-nav span.d-none.d-md-inline {
+        display: none;
+    }
+
+    .btn-week-nav span.d-inline.d-md-none {
+        display: inline;
+    }
+
+    .week-nav-form {
+        display: inline-block;
+    }
+}
+
+@media(max-width: 576px) {
+    .btn-week-nav {
+        font-size: 0.8rem;
+        padding: 8px;
+    }
+
+    .btn-week-nav span.d-none.d-md-inline {
+        display: none;
+    }
+
+    .btn-week-nav span.d-inline.d-md-none {
+        display: inline;
+    }
+
+    .week-nav-form {
+        display: inline-block;
+    }
+}

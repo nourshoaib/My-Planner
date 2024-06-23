@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='tasks.css') }}">
+</head>
+    <div class="container mt-4">
+        <div class="tasks-wrapper">
+            {% for task, day, date, id in tasks_list %}
+                <div class="task-box">
+                    <div class="task-details">
+                        <p class="task-name">- {{ task }}</p>
+                        <p class="task-day">{{ day }}</p>
+                        <p class="task-date">{{ date }}</p>
+                    </div>
+                    <div class="task-actions">
+                        <form action="/delete_task" method="post" class="action-form">
+                            <input type="hidden" name="task_id" value="{{ id }}">
+                            <button type="submit" class="action-btn">
+                                <img src="{{ url_for('static', filename='trash.ico') }}" alt="Trash Icon" class="action-icon">
+                            </button>
+                        </form>
+                        <form action="/mark_done" method="post" class="action-form">
+                            <input type="hidden" name="task_id" value="{{ id }}">
+                            <button type="submit" class="action-btn">
+                                <img src="{{ url_for('static', filename='done.ico') }}" alt="Done Icon" class="action-icon">
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+            {% for task, day, date, id in unfinished_tasks %}
+                <div class="task-box">
+                    <div class="task-details">
+                        <p class="task-name"><del>- {{ task }}</del></p>
+                        <p class="task-day">{{ day }}</p>
+                        <p class="task-date">{{ date }}</p>
+                    </div>
+                    <div class="task-actions">
+                        <form action="/delete_task" method="post" class="action-form">
+                            <input type="hidden" name="task_id" value="{{ id }}">
+                            <button type="submit" class="action-btn">
+                                <img src="{{ url_for('static', filename='trash.ico') }}" alt="Trash Icon" class="action-icon">
+                            </button>
+                        </form>
+                        <form action="/not_done" method="post" class="action-form">
+                            <input type="hidden" name="task_id" value="{{ id }}">
+                            <button type="submit" class="action-btn">
+                                <img src="{{ url_for('static', filename='notdone.ico') }}" alt="Not Done Icon" class="action-icon">
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <a href="/add" class="add-button">
+        <img src="{{ url_for('static', filename='add.ico') }}" alt="Add Icon" class="add-icon">
+    </a>
+{% endblock %}

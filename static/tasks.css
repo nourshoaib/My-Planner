@@ -1,0 +1,103 @@
+/* Importing fonts from Google */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Resetting */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.tasks-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.task-box {
+    background-color: #ecf0f3;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.task-name {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.task-day, .task-date {
+    font-size: 1rem;
+    color: #999;
+}
+
+.task-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.action-form {
+    margin: 0;
+}
+
+.action-btn {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.action-icon {
+    width: 20px;
+    height: 20px;
+}
+
+@media(max-width: 380px) {
+    .task-box {
+        padding: 15px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .task-actions {
+        margin-top: 10px;
+    }
+
+    .action-icon {
+        width: 15px;
+        height: 15px;
+    }
+}
+.add-button {
+    position: fixed;
+    bottom: 20px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+    z-index: 1000; /* Ensure it's above other content */
+    background-color: #007bff; /* Button background color */
+    border-radius: 50%; /* Rounded button */
+    padding: 15px; /* Padding inside the button */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional: Box shadow for button */
+    text-decoration: none; /* Remove underline for icon */
+}
+
+.add-icon {
+    width: 30px; /* Adjust icon size */
+    height: 30px; /* Adjust icon size */
+    display: block; /* Ensures the icon is centered */
+    margin: auto; /* Centers the icon within the button */
+}
+
+.add-button:hover {
+    background-color: #0056b3; /* Darker background color on hover */
+}
+
